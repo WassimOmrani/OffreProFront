@@ -1,0 +1,26 @@
+<div style="display: flex;flex-wrap: wrap">
+    <mat-card style="margin: 5px; width: 400px;height: auto; position: relative" *ngFor="let article of articles">
+        <mat-card-subtitle style="display: flex; justify-content: space-between; align-items: center">
+            <img [src]="article.image.url" style="width: 300px;height: 170px" alt="Card image cap">
+            <div style="display: flex; align-items: center;margin-top: 140px" *ngIf="role=='Admin'">
+                <button mat-icon-button (click)="validerSuppression(article.id)" matTooltip="Supprimer">
+                    <mat-icon color="primary"><span class="material-symbols-outlined">delete</span></mat-icon>
+                </button>
+                <div style="border-left: 2px solid rgba(194,194,194,0.67);  height: 20px"></div>
+                <button mat-icon-button matTooltip="Modifier" (click)="modifier(article.id)">
+                    <mat-icon color="primary"><span class="material-symbols-outlined">edit</span></mat-icon>
+                </button>
+            </div>
+        </mat-card-subtitle>
+        <mat-card-title style="font-size: 20px;color: #3e50b0; text-align: left">{{article.titre}}</mat-card-title>
+        <mat-card-content style="margin-top: 10px; display: flex; align-items: center; justify-content: space-between">
+            <mat-card-title style="font-size: 15px;width: 620px; text-align: left">{{article.description}}</mat-card-title>
+        </mat-card-content>
+        <div style="width: 100%; display: flex; justify-content: right">
+            <button mat-icon-button style="position: absolute; bottom: 10px; right: 10px"
+                    matTooltip="Voir plus" (click)="getDetails(article.id)">
+                <mat-icon color="primary"><span class="material-symbols-outlined">read_more</span></mat-icon>
+            </button>
+        </div>
+    </mat-card>
+</div>
